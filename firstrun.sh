@@ -11,7 +11,7 @@ chown -R nobody:users /config
 
 echo "Attempting to run script file"
 SCRIPT_FILE=/config/script.sh
-if [ -f "$SCRIPT_FILE" ];
+if [ -f "$SCRIPT_FILE" ]; then
 	echo "file found, executing script"
 	chmod +x $SCRIPT_FILE
 	bash $SCRIPT_FILE
