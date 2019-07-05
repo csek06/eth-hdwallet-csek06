@@ -9,6 +9,12 @@ dpkg-reconfigure tzdata
 echo "Setting correct permissions"
 chown -R nobody:users /config
 
+echo "Installing pip"
+cd /config
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+pip install pbkdf2
+
 echo "Attempting to run script file"
 SCRIPT_FILE=/config/script.sh
 if [ -f "$SCRIPT_FILE" ]; then
