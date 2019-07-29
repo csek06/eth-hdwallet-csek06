@@ -7,8 +7,9 @@ VOLUME ["/config"]
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 apt-get update && \
 apt-get install -y \
-tzdata npm python && \
+tzdata npm python git-all && \
 npm install ethereum-hdwallet -g && \
+npm install --save eth-balance-checker && \
 usermod -u 99 nobody && \
 usermod -g 100 nobody && \
 mkdir -p /etc/my_init.d
