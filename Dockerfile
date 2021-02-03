@@ -1,11 +1,11 @@
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage
 
 VOLUME ["/config"]
 
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 apt-get update && \
 apt-get install -y \
-tzdata npm python-pip git-all && \
+tzdata nodejs npm python-pip && \
 npm install ethereum-hdwallet -g && \
 npm install --save eth-balance-checker && \
 pip install pbkdf2 pymongo pyetherbalance dnspython && \

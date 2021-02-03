@@ -11,7 +11,7 @@ chown -R nobody:users /config
 
 echo "Checking Container Type"
 if [ ! -z $TYPE ]; then
-	CONFIG_FILE = /config/
+	CONFIG_FILE = "/config/"
 	if [[ $TYPE = SEED ]]; then
 		CONFIG_FILE = $CONFIG_FILE/mongo-seed-creator.py
 	fi
