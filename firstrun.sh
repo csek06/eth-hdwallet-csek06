@@ -9,18 +9,21 @@ dpkg-reconfigure tzdata
 echo "Setting correct permissions"
 chown -R nobody:users /config
 
-echo "Installing pip"
-cd /config
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-pip install pbkdf2
+echo "Checking Container Type"
+if [ ! -z $TYPE ]; then
+	CONFIG_FILE = /config/
+	if [[ $TYPE = SEED ]]; then
+		CONFIG_FILE = $CONFIG_FILE/mongo-seed-creator.py
+	fi
+	if [[ $TYPE = ADDRESS ]]; then
+		CONFIG_FILE = $CONFIG_FILE/mongo-address-lookup.py
+	fi
+	if [[ $TYPE = BALANCE ]]; then
+		CONFIG_FILE = $CONFIG_FILE/mongo-balance-lookup.py
+	fi
+	if [ -f $CONFIG_FILE ]; then
 
-echo "Attempting to run script file"
-SCRIPT_FILE=/config/script.sh
-if [ -f "$SCRIPT_FILE" ]; then
-	echo "file found, executing script"
-	chmod +x $SCRIPT_FILE
-	bash $SCRIPT_FILE
-else
-	echo "script file not found"
+	else
+		echo "Script file not found... $CONFIG_FILE"
+	fi
 fi
