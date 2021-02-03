@@ -22,7 +22,7 @@ if [ ! -z $TYPE ]; then
 		CONFIG_FILE = $CONFIG_FILE/mongo-balance-lookup.py
 	fi
 	if [ -f $CONFIG_FILE ]; then
-
+		python $CONFIG_FILE
 	else
 		echo "Script file not found... $CONFIG_FILE"
 	fi
