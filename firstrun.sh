@@ -11,19 +11,19 @@ chown -R nobody:users /config
 
 echo "Checking Container Type"
 if [ ! -z $TYPE ]; then
-	CONFIG_FILE= "/config/"
+	DIR= "/config"
 	if [ $TYPE = "SEED" ]; then
-		CONFIG_FILE= $CONFIG_FILE/mongo-seed-creator.py
+		SCRIPT_FILE= "$DIR/mongo-seed-creator.py"
 	fi
 	if [ $TYPE = "ADDRESS" ]; then
-		CONFIG_FILE= $CONFIG_FILE/mongo-address-lookup.py
+		SCRIPT_FILE= "$DIR/mongo-address-lookup.py"
 	fi
 	if [ $TYPE = "BALANCE" ]; then
-		CONFIG_FILE= $CONFIG_FILE/mongo-balance-lookup.py
+		SCRIPT_FILE= "$DIR/mongo-balance-lookup.py"
 	fi
-	if [ -f $CONFIG_FILE ]; then
-		python $CONFIG_FILE
+	if [ -f $SCRIPT_FILE ]; then
+		python $SCRIPT_FILE
 	else
-		echo "Script file not found... $CONFIG_FILE"
+		echo "Script file not found... $SCRIPT_FILE"
 	fi
 fi
