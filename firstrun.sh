@@ -11,15 +11,15 @@ chown -R nobody:users /config
 
 echo "Checking Container Type"
 if [ ! -z $TYPE ]; then
-	CONFIG_FILE = "/config/"
-	if [[ $TYPE = SEED ]]; then
-		CONFIG_FILE = $CONFIG_FILE/mongo-seed-creator.py
+	CONFIG_FILE= "/config/"
+	if [ $TYPE = "SEED" ]; then
+		CONFIG_FILE= $CONFIG_FILE/mongo-seed-creator.py
 	fi
-	if [[ $TYPE = ADDRESS ]]; then
-		CONFIG_FILE = $CONFIG_FILE/mongo-address-lookup.py
+	if [ $TYPE = "ADDRESS" ]; then
+		CONFIG_FILE= $CONFIG_FILE/mongo-address-lookup.py
 	fi
-	if [[ $TYPE = BALANCE ]]; then
-		CONFIG_FILE = $CONFIG_FILE/mongo-balance-lookup.py
+	if [ $TYPE = "BALANCE" ]; then
+		CONFIG_FILE= $CONFIG_FILE/mongo-balance-lookup.py
 	fi
 	if [ -f $CONFIG_FILE ]; then
 		python $CONFIG_FILE
