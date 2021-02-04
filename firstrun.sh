@@ -21,8 +21,12 @@ if [ ! -z $TYPE ]; then
 		SCRIPT_FILE="$DIR/mongo-address-lookup.py"
 	fi
 	if [ $TYPE = "BALANCE" ]; then
-		echo "Running as an balance checker"
+		echo "Running as a balance checker"
 		SCRIPT_FILE="$DIR/mongo-balance-lookup.py"
+	fi
+	if [ $TYPE = "ETHERSCAN" ]; then
+		echo "Running as an etherscan balance checker"
+		SCRIPT_FILE="$DIR/mongo-balance-lookup-etherscan.py"
 	fi
 	if [ -f $SCRIPT_FILE ]; then
 		python3 $SCRIPT_FILE
