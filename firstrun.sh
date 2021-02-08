@@ -16,6 +16,10 @@ if [ ! -z $TYPE ]; then
 		echo "Running as a seed creator"
 		SCRIPT_FILE="$DIR/mongo-seed-creator.py"
 	fi
+	if [ $TYPE = "ITERATOR" ]; then
+		echo "Running as a iterator list creator"
+		SCRIPT_FILE="$DIR/mongo-iterator-creator.py"
+	fi
 	if [ $TYPE = "ADDRESS" ]; then
 		echo "Running as an address checker"
 		SCRIPT_FILE="$DIR/mongo-address-lookup.py"
