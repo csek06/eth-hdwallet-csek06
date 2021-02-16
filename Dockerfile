@@ -5,12 +5,8 @@ VOLUME ["/config"]
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 apt-get update && \
 apt-get install -y \
-tzdata npm python3-pip git && \
-npm install ethereum-hdwallet -g && \
-npm install --save eth-balance-checker && \
-npm install -g n && \
-n latest && \ 
-pip3 install pbkdf2 pymongo pyetherbalance dnspython && \
+tzdata python3-pip && \
+pip3 install pbkdf2 pymongo pyetherbalance dnspython hdwallet && \
 usermod -u 99 nobody && \
 usermod -g 100 nobody && \
 mkdir -p /etc/my_init.d
