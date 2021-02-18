@@ -32,6 +32,10 @@ if [ ! -z $TYPE ]; then
 		echo "Running as an etherscan balance checker"
 		SCRIPT_FILE="$DIR/mongo-balance-lookup-etherscan.py"
 	fi
+	if [ $TYPE = "OPENETHEREUM" ]; then
+		echo "Running as an openethereum balance checker"
+		SCRIPT_FILE="$DIR/mongo-balance-lookup-openethereum.py"
+	fi
 	if [ -f $SCRIPT_FILE ]; then
 		python3 $SCRIPT_FILE
 	else
