@@ -46,6 +46,14 @@ if [ ! -z $TYPE ]; then
 			echo "Running as a mongodb balance crosschecker"
 			SCRIPT_FILE="$DIR/mongo-balance-crosscheck.py"
 		fi
+		if [ $TYPE = "WORKER_ADMIN" ]; then
+			echo "Running as a mongodb worker admin"
+			SCRIPT_FILE="$DIR/mongo-worker-admin.py"
+		fi
+		if [ $TYPE = "BALANCES_UPDATER" ]; then
+			echo "Running as a mongodb balances updater"
+			SCRIPT_FILE="$DIR/mongo-bigquery-getbalances.py"
+		fi
 		if [ -f $SCRIPT_FILE ]; then
 			python3 $SCRIPT_FILE
 		else
