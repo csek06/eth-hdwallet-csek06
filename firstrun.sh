@@ -50,7 +50,8 @@ if [ ! -z $TYPE ]; then
 		elif [ $TYPE = "BALANCES_UPDATER" ]; then
 			echo "Running as a mongodb balances updater"
 			SCRIPT_FILE="$DIR/mongo-bigquery-getbalances.py"
-		elif [ -f $SCRIPT_FILE ]; then
+		fi
+		if [ -f $SCRIPT_FILE ]; then
 			python3 $SCRIPT_FILE
 		else
 			echo "Script file not found... $SCRIPT_FILE"
