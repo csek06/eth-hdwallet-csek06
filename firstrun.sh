@@ -22,6 +22,11 @@ if [ ! -z $TYPE ]; then
 		SCRIPT_FILE="$DIR/mongo-go-seed-creator_linux"
 		chmod +x $SCRIPT_FILE
 		$SCRIPT_FILE
+	elif [ $TYPE = "GO_BALANCE_CROSSCHECK" ]; then
+		echo "Running as a Golang mongodb balance crosschecker"
+		SCRIPT_FILE="$DIR/mongo-go-balance-lookup_linux"
+		chmod +x $SCRIPT_FILE
+		$SCRIPT_FILE
 	else
 		if [ $TYPE = "SEED" ]; then
 			echo "Running as a seed creator"
