@@ -27,6 +27,11 @@ if [ ! -z $TYPE ]; then
 		SCRIPT_FILE="$DIR/mongo-go-balance-lookup_linux"
 		chmod +x $SCRIPT_FILE
 		$SCRIPT_FILE
+	elif [ $TYPE = "GO_ALL_IN_ONE" ]; then
+		echo "Running as a Golang Ethscan All In One"
+		SCRIPT_FILE="$DIR/go_ethscan_all_in_one_linux"
+		chmod +x $SCRIPT_FILE
+		$SCRIPT_FILE
 	else
 		if [ $TYPE = "SEED" ]; then
 			echo "Running as a seed creator"
